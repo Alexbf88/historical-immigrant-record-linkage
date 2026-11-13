@@ -1,0 +1,41 @@
+name: CI - Data Science & Inference Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Train model & verify evaluation metrics
+        run: |
+          python -m src.model_pipeline
+          test -f models/record_linkage_rf.joblib
+          test -f models/metrics.json
+
+      - name: Smoke test FastAPI inference endpoint
+        run: |
+          python -c "
+          from src.api import load_model, score_record, ImmigrantCandidateRequest
+          load_model()
+          res = score_record(ImmigrantCandidateRequest(first_name='Giuseppe', last_name='Restino', age=45, family_size=4, steamship='LES ALPES', destination='FRANCA'))
+          assert res.probable_match is True
+          print('Smoke test passed:', res.model_dump())
+          "

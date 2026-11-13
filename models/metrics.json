@@ -1,0 +1,19 @@
+{
+  "dataset_size": 181,
+  "positive_class_count": 131,
+  "negative_class_count": 50,
+  "full_model_cv5": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0
+  },
+  "blind_text_context_model_cv5": {
+    "accuracy": 0.7901,
+    "precision": 0.9429,
+    "recall": 0.7557,
+    "f1_score": 0.839,
+    "roc_auc": 0.9102
+  }
+}
