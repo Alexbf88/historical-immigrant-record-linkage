@@ -9,6 +9,8 @@
 
 An end-to-end **Data Engineering, NLP Entity Resolution, and MLOps/SRE** project designed to locate and link historical immigrant arrival records (1882–1953) from the **São Paulo Immigration Museum Digital Archive** (*Museu da Imigração do Estado de São Paulo*).
 
+> **About This Project:** Developed as part of a **Data Science undergraduate assignment** (*Data Mining*), this project was an opportunity to solve a real-world genealogical problem I was facing at the time. While my background in Data Science is primarily academic, I work professionally as a **Site Reliability Engineer (SRE)** at the **State Police Internal Affairs (*Corregedoria da Polícia Estadual*)**—which is why this repository pairs the ML/NLP pipeline with production-oriented SRE practices, including containerization, Kubernetes manifests, CI/CD, and FinOps resource right-sizing.
+
 ---
 
 ## 1. Real-World Motivation & Problem Statement
