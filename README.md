@@ -150,21 +150,19 @@ curl -X POST "http://127.0.0.1:8000/v1/score" \
 ```json
 {
   "probable_match": true,
-  "match_probability": 0.8924,
+  "match_probability": 0.8985,
   "model_variant_used": "random_forest_blind_text_demographic_10_features",
   "computed_features": {
-    "ano_chegada": 1901.0,
-    "distancia_janela_temporal": 0.0,
     "idade_num": 45.0,
-    "tamanho_familia": 4,
-    "tfidf_char_sim_sobrenome": 0.6565,
+    "tamanho_familia": 4.0,
+    "tfidf_char_sim_sobrenome": 0.5729,
     "levenshtein_sim_sobrenome": 0.8571,
     "seq_sim_sobrenome": 0.8571,
     "fonetica_sim_sobrenome": 1.0,
     "similaridade_prenome_alvo": 1.0,
-    "vapor_rota_francesa": 1,
-    "tem_destino_registrado": 1,
-    "eh_chefe_ou_so": 1
+    "vapor_rota_francesa": 1.0,
+    "tem_destino_registrado": 1.0,
+    "eh_chefe_ou_so": 1.0
   },
   "latency_ms": 1.42
 }

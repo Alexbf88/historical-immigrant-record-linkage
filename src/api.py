@@ -108,6 +108,7 @@ def score_record(payload: ImmigrantCandidateRequest) -> LinkagePredictionRespons
         variant = "random_forest_blind_text_demographic_10_features"
 
     x_vec = np.array([[feats[c] for c in cols]])
+    active_features = {c: feats[c] for c in cols}
     prob = float(model.predict_proba(x_vec)[0, 1])
     pred = bool(prob >= 0.5)
 
@@ -120,6 +121,6 @@ def score_record(payload: ImmigrantCandidateRequest) -> LinkagePredictionRespons
         probable_match=pred,
         match_probability=round(prob, 4),
         model_variant_used=variant,
-        computed_features=feats,
+        computed_features=active_features,
         latency_ms=latency_ms,
     )

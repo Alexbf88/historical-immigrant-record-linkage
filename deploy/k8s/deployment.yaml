@@ -15,13 +15,17 @@ spec:
     metadata:
       labels:
         app: immigrant-record-linkage-api
+        cost-center: data-science-research
+        finops-tier: burstable
     spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
       containers:
         - name: inference-api
-          image: ghcr.io/alexbf88/historical-immigrant-record-linkage:latest
+          # Pinned to immutable release tag (or commit SHA via CI/CD) for deterministic rollbacks
+          image: ghcr.io/alexbf88/historical-immigrant-record-linkage:v1.0.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
           resources:
